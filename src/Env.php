@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PeppecPhpTest;
+
+use RuntimeException;
+
+/**
+ * Reads simple KEY=VALUE files. Empty lines and lines starting with # are skipped.
+ */
+final class Env
+{
+    /**
+     * @return array<string, string>
+     */
+    public static function load(string $path): array
+    {
+        $lines = @file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        if ($lines === false) {
+            throw new RuntimeException("Cannot read $path");
+        }
+
+        $values = [];
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if ($line === '' || str_starts_with($line, '#') || !str_contains($line, '=')) {
+                continue;
+            }
+            [$key, $value] = explode('=', $line, 2);
+            $values[trim($key)] = trim($value);
+        }
+
+        return $values;
+    }
+}

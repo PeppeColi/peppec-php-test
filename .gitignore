@@ -1,0 +1,11 @@
+/vendor
+.phpunit.cache
+.env.testing
+.idea/
+
+# Working folders of the PEPPEC workflows
+.agent/
+_ctl/
+_preset/
+_extra/
+_base/

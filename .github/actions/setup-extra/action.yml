@@ -1,0 +1,7 @@
+name: setup-extra
+description: Project-specific setup, run after the preset in CI and for the agent
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: cp .env.testing.example .env.testing

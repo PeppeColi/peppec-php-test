@@ -1,0 +1,5 @@
+# PEPPEC configuration for this repository. Always read from main.
+preset: php-v1
+
+# Project-specific setup, run after the preset: creates .env.testing for the tests
+extra_setup: .github/actions/setup-extra
