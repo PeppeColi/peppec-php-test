@@ -14,6 +14,16 @@ use PeppecPhpTest\Stats;
 Stats::sum([1, 2, 3]); // 6
 ```
 
+### `Stats::average`
+
+Returns the arithmetic mean of a list of integers as a float. Throws an `InvalidArgumentException` for an empty list.
+
+```php
+use PeppecPhpTest\Stats;
+
+Stats::average([1, 2, 3, 4]); // 2.5
+```
+
 ### `Env::load`
 
 Reads a `KEY=VALUE` file into an array. Empty lines and lines starting with `#` are skipped.
