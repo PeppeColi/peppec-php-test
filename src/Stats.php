@@ -59,4 +59,20 @@ final class Stats
 
         return ($values[$middle - 1] + $values[$middle]) / 2;
     }
+
+    /**
+     * Returns the difference between the largest and the smallest value.
+     *
+     * @param list<int> $values
+     *
+     * @throws \InvalidArgumentException If the list is empty.
+     */
+    public static function range(array $values): int
+    {
+        if ($values === []) {
+            throw new \InvalidArgumentException('Cannot compute the range of an empty list.');
+        }
+
+        return max($values) - min($values);
+    }
 }
