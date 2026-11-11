@@ -34,4 +34,29 @@ final class Stats
 
         return array_sum($values) / count($values);
     }
+
+    /**
+     * Returns the median of the values.
+     *
+     * @param list<int> $values
+     *
+     * @throws \InvalidArgumentException If the list is empty.
+     */
+    public static function median(array $values): float
+    {
+        if ($values === []) {
+            throw new \InvalidArgumentException('Cannot compute the median of an empty list.');
+        }
+
+        sort($values);
+
+        $count = count($values);
+        $middle = intdiv($count, 2);
+
+        if ($count % 2 === 1) {
+            return (float) $values[$middle];
+        }
+
+        return ($values[$middle - 1] + $values[$middle]) / 2;
+    }
 }

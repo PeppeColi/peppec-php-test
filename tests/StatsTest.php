@@ -43,4 +43,34 @@ final class StatsTest extends TestCase
 
         Stats::average([]);
     }
+
+    public function testMedianWithOddCount(): void
+    {
+        self::assertSame(2.0, Stats::median([1, 2, 3]));
+    }
+
+    public function testMedianWithEvenCount(): void
+    {
+        self::assertSame(2.5, Stats::median([1, 2, 3, 4]));
+    }
+
+    public function testMedianWithUnsortedInputDoesNotModifyIt(): void
+    {
+        $values = [5, 1, 4, 2, 3];
+
+        self::assertSame(3.0, Stats::median($values));
+        self::assertSame([5, 1, 4, 2, 3], $values);
+    }
+
+    public function testMedianOfSingleElement(): void
+    {
+        self::assertSame(7.0, Stats::median([7]));
+    }
+
+    public function testMedianOfEmptyListThrows(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        Stats::median([]);
+    }
 }
