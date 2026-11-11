@@ -96,4 +96,26 @@ final class StatsTest extends TestCase
 
         Stats::range([]);
     }
+
+    public function testMax(): void
+    {
+        self::assertSame(5, Stats::max([3, 1, 5, 2]));
+    }
+
+    public function testMaxOfSingleElement(): void
+    {
+        self::assertSame(7, Stats::max([7]));
+    }
+
+    public function testMaxWithNegativeValues(): void
+    {
+        self::assertSame(-1, Stats::max([-1, -3, -2]));
+    }
+
+    public function testMaxOfEmptyListThrows(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        Stats::max([]);
+    }
 }

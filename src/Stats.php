@@ -75,4 +75,20 @@ final class Stats
 
         return max($values) - min($values);
     }
+
+    /**
+     * Returns the largest value.
+     *
+     * @param list<int> $values
+     *
+     * @throws \InvalidArgumentException If the list is empty.
+     */
+    public static function max(array $values): int
+    {
+        if ($values === []) {
+            throw new \InvalidArgumentException('Cannot compute the max of an empty list.');
+        }
+
+        return max($values);
+    }
 }
