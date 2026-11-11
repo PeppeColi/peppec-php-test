@@ -19,4 +19,28 @@ final class StatsTest extends TestCase
     {
         self::assertSame(0, Stats::sum([]));
     }
+
+    public function testAverage(): void
+    {
+        self::assertSame(2.0, Stats::average([1, 2, 3]));
+        self::assertSame(2.5, Stats::average([1, 2, 3, 4]));
+    }
+
+    public function testAverageOfSingleElement(): void
+    {
+        self::assertSame(5.0, Stats::average([5]));
+    }
+
+    public function testAverageWithNegativeValues(): void
+    {
+        self::assertSame(-2.0, Stats::average([-1, -2, -3]));
+        self::assertSame(-0.5, Stats::average([2, -3]));
+    }
+
+    public function testAverageOfEmptyListThrows(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        Stats::average([]);
+    }
 }

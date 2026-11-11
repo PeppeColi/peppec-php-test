@@ -18,4 +18,20 @@ final class Stats
     {
         return array_sum($values);
     }
+
+    /**
+     * Returns the arithmetic mean of the values.
+     *
+     * @param list<int> $values
+     *
+     * @throws \InvalidArgumentException If the list is empty.
+     */
+    public static function average(array $values): float
+    {
+        if ($values === []) {
+            throw new \InvalidArgumentException('Cannot compute the average of an empty list.');
+        }
+
+        return array_sum($values) / count($values);
+    }
 }
