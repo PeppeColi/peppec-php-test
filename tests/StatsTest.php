@@ -73,4 +73,27 @@ final class StatsTest extends TestCase
 
         Stats::median([]);
     }
+
+    public function testRange(): void
+    {
+        self::assertSame(4, Stats::range([3, 1, 5, 2]));
+    }
+
+    public function testRangeOfSingleElementIsZero(): void
+    {
+        self::assertSame(0, Stats::range([7]));
+    }
+
+    public function testRangeWithNegativeValues(): void
+    {
+        self::assertSame(2, Stats::range([-1, -3, -2]));
+        self::assertSame(5, Stats::range([2, -3]));
+    }
+
+    public function testRangeOfEmptyListThrows(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        Stats::range([]);
+    }
 }

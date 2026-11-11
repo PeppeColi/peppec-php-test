@@ -34,6 +34,16 @@ use PeppecPhpTest\Stats;
 Stats::median([3, 1, 2, 4]); // 2.5
 ```
 
+### `Stats::range`
+
+Returns the difference between the largest and the smallest value of a list of integers. Throws an `InvalidArgumentException` for an empty list.
+
+```php
+use PeppecPhpTest\Stats;
+
+Stats::range([3, 1, 5, 2]); // 4
+```
+
 ### `Env::load`
 
 Reads a `KEY=VALUE` file into an array. Empty lines and lines starting with `#` are skipped.
