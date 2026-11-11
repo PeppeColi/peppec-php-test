@@ -24,6 +24,16 @@ use PeppecPhpTest\Stats;
 Stats::average([1, 2, 3, 4]); // 2.5
 ```
 
+### `Stats::median`
+
+Returns the median of a list of integers as a float: the middle value, or the mean of the two middle values when the count is even. The input list is not modified. Throws an `InvalidArgumentException` for an empty list.
+
+```php
+use PeppecPhpTest\Stats;
+
+Stats::median([3, 1, 2, 4]); // 2.5
+```
+
 ### `Env::load`
 
 Reads a `KEY=VALUE` file into an array. Empty lines and lines starting with `#` are skipped.
